@@ -1,4 +1,4 @@
-versio: 0.2
+version: 0.2
 phases:
   install:
     runtime-versions:
@@ -8,9 +8,5 @@ phases:
       - npm install
   build:
     commands:
-     - yum install -y xorg-x11-server-Xvfb gtk2-devel gtk3-devel libnotify-devel GConf2 nss libXScrnSaver alsa-lib
-     - npm run cy:parallel
-  post_build:
-    commands:
-     - aws s3 sync allures-report s3://reportes-de-pruebas/
-     - aws s3 cp --recursive --acl public-read s3://reportes-de-pruebas/ s3://reportes-de-pruebas --metadata-directive REPLACE
+      - yum install -y xorg-x11-server-Xvfb gtk2-devel gtk3-devel libnotify-devel GConf2 nss libXScrnSaver alsa-lib
+      - npm run cy:parallel
