@@ -9,3 +9,7 @@ phases:
   build:
     commands:
       - npm run cy:parallel
+post_build:
+    commands:
+      - aws s3 sync allures-report s3://reportes-de-pruebas/
+      - aws s3 cp --recursive --acl public-read s3://reportes-de-pruebas/ s3://reportes-de-pruebas --metadata-directive REPLACE
