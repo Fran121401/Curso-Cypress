@@ -9,7 +9,7 @@
     "generar-reporte": "npx allure generate allure-results -o allure-report --clean",
     "abrir-report": "npx allure open allure-report",
     "test": "npm run limpiar-reporte &&(npm run ejecutar-pruebas || true)&& npm run generar-reporte && npm run abrir-report",
-    "cy:parallel" : "cypress-parallel -s ejecutar-pruebas -t 2 -d ./cypress/e2e/Pages/test"
+    "cy:parallel": "npm run limpiar-reporte && cypress-parallel -s ejecutar-pruebas -t 2 -d ./cypress/e2e/tests || true && npm run generar-reporte"
   },
   "repository": {
     "type": "git",
