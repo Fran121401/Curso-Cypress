@@ -7,47 +7,62 @@ const user = CommonPageMethods.generateRandomString();
 const password = CommonPageMethods.generateRandomString(7);
 const existingUser = LoginData.validCredenctials.username
 
-describe(CommonPageData.testSuites.registro, () =>{
-    /*it ("Registro de usuario válido", () => {
-        Logger.stepNumber(1)
-        Logger.step('Navegar a la página de inicio')
+// Suite de pruebas para el módulo de registro de usuarios
+describe(CommonPageData.testSuites.registro, () => {
+
+    // Caso de prueba: Registro de usuario con datos válidos
+    it("Registro de usuario válido", () => {
+        // Paso 1: Navegar a la página principal de la aplicación
+        Logger.stepNumber(1);
+        Logger.step('Navegar a la página de inicio');
         CommonPageMethods.navigateToDemoBlaze();
 
-        Logger.stepNumber(2)
-        Logger.step('Hacer clic en "Sign up" en la barra de navegación')
+        // Paso 2: Acceder al formulario de registro (Sign up)
+        Logger.stepNumber(2);
+        Logger.step('Hacer clic en "Sign up" en la barra de navegación');
         CommonPageMethods.clickOnSignUpOption();
 
-        Logger.step(3)
-        Logger.step('Completar todos los campos obligatorios con información válida')
-        SignupMethods.insertUsername(user)
-        SignupMethods.insertPassword(password)
+        // Paso 3: Ingresar un nombre de usuario y contraseña válidos
+        Logger.stepNumber(3);
+        Logger.step('Completar todos los campos obligatorios con información válida');
+        SignupMethods.insertUsername(user);     // Se asume que 'user' es una variable previamente definida con un username único
+        SignupMethods.insertPassword(password); // Se asume que 'password' también está definido y es válido
 
-        Logger.stepNumber(4)
-        Logger.step('Hacer clic en "Sign up" para registrar al usuario')
+        // Paso 4: Confirmar el registro
+        Logger.stepNumber(4);
+        Logger.step('Hacer clic en "Sign up" para registrar al usuario');
         SignupMethods.clickOnSignupButton();
-        Logger.verificaiton('Verificar que se muestre el mensaje "Sign up successful"')
-        SignupMethods.VerifySignupSuccesfulMessageIsDisplayed();
 
+        // Verificación: Confirmar que el mensaje de éxito sea mostrado
+        Logger.verificaiton('Verificar que se muestre el mensaje "Sign up successful"'); 
+        SignupMethods.VerifySignupSuccesfulMessageIsDisplayed(); 
     });
 
-    it ("Registro de usuario inválido", () => {
-        Logger.stepNumber(1)
-        Logger.step('Navegar a la página de inicio')
+    // Caso de prueba: Registro de usuario con datos inválidos (usuario ya existente)
+    it("Registro de usuario inválido", () => {
+        // Paso 1: Navegar a la página principal
+        Logger.stepNumber(1);
+        Logger.step('Navegar a la página de inicio');
         CommonPageMethods.navigateToDemoBlaze();
 
-        Logger.stepNumber(2)
-        Logger.step('Hacer clic en "Sign up" en la barra de navegación')
+        // Paso 2: Acceder al formulario de registro
+        Logger.stepNumber(2);
+        Logger.step('Hacer clic en "Sign up" en la barra de navegación');
         CommonPageMethods.clickOnSignUpOption();
 
-        Logger.step(3)
-        Logger.step('Completar todos los campos obligatorios con información inválida')
-        SignupMethods.insertUsername(existingUser)
-        SignupMethods.insertPassword(password)
+        // Paso 3: Ingresar un nombre de usuario que ya existe
+        Logger.stepNumber(3);  
+        Logger.step('Completar todos los campos obligatorios con información inválida');
+        SignupMethods.insertUsername(existingUser);  // Se asume que 'existingUser' ya fue registrado previamente
+        SignupMethods.insertPassword(password);      // Contraseña puede ser válida, pero el usuario ya está en uso
 
-        Logger.stepNumber(4)
-        Logger.step('Hacer clic en "Sign up" para registrar al usuario')
+        // Paso 4: Intentar registrar el usuario.
+        Logger.stepNumber(4);
+        Logger.step('Hacer clic en "Sign up" para registrar al usuario');
         SignupMethods.clickOnSignupButton();
-        Logger.verificaiton('Verificar que se muestre un mensaje de error indicando los campos')
-        SignupMethods.VerifyThatThisUserAlreadyExistMessageIsDisplayed();
-    });*/
-})
+
+        // Verificación: Confirmar que se muestra un mensaje de error indicando que el usuario ya existe
+        Logger.verificaiton('Verificar que se muestre un mensaje de error indicando los campos');
+        SignupMethods.VerifyThatThisUserAlreadyExistMessageIsDisplayed();  
+    });
+});

@@ -13,8 +13,8 @@ export class PlaceOrderMathods{
         PlaceOrderElements.textboxes.city.invoke('val', city)
     }
 
-    static insertCard(creditCardNumber){
-        PlaceOrderElements.textboxes.creditCardNumber.invoke('val', creditCardNumber)
+    static insertCard(creditCard){
+        PlaceOrderElements.textboxes.creditCard.invoke('val', creditCard)
     }
 
     static insertMonth(month){
@@ -37,7 +37,7 @@ export class PlaceOrderMathods{
         this.insertName(data.name)
         this.insertCountry(data.country)
         this.insertCity(data.city)
-        this.insertCard(data.creditCardNumber)
+        this.insertCard(data.creditCard)
         this.insertMonth(data.month)
         this.insertYear(data.year)
     }
